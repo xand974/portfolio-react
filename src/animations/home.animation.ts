@@ -16,7 +16,7 @@ export const letterAppearAnimation = {
     opacity: 1,
     transition: {
       ease: CUBIC,
-      duration: 0.3,
+      duration: 0.1,
     },
   },
 };

@@ -1,14 +1,30 @@
-import React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import "../sass/app.scss";
 import Sidebar from "../components/Sidebar";
 import { motion } from "framer-motion";
+import { useCanvas } from "../hooks/use-canvas";
 
 type AppType = {
   children: JSX.Element;
 };
 function Main({ children }: AppType) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [canvas] = useCanvas(canvasRef);
+  useEffect(() => {
+    if (!canvas) return;
+    canvas.draw();
+    const infos = canvas.getImgInfos();
+    const scanned = infos.data;
+    // for (let i = 0; i < scanned.length; i += 4) {
+    //   const grayScale = scanned[i] + scanned[i + 1] + scanned[i + 2];
+    //   const middle = grayScale / 3;
+    //   scanned[i] = middle;
+    //   scanned[i + 1] = middle;
+    //   scanned[i + 2] = middle;
+    // }
+    // const image = new ImageData(scanned, canvas.width, canvas.height);
+    // canvas.setImageFilter(image);
+  }, [canvas]);
 
   return (
     <motion.div className="w-screen h-screen overflow-hidden p-7 bg-[#141414]">
