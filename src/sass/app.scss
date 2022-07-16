@@ -1,0 +1,14 @@
+.main {
+  &__right {
+    position: relative;
+    border: 1px solid rgba(156, 163, 175, 0.596);
+    &__wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      // background: red;
+    }
+  }
+}
