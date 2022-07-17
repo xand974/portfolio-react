@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import { ME } from "mock/data";
 import { parentLetter, letterAppearAnimation } from "animations/home.animation";
+import { pageVariant } from "../../variants/app.variant";
 
 export default function Home() {
   const [lastName, firstName] = ME;
   return (
-    <motion.section className="w-full h-full grid grid-cols-2">
+    <motion.section
+      variants={pageVariant}
+      className="w-full h-full grid grid-cols-2"
+    >
       <motion.div className=" p-6">
         <motion.div
           variants={parentLetter}

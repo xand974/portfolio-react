@@ -2,13 +2,29 @@ import { ArrowForwardOutlined } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { PROJECT_IMG } from "mock/data";
 import Tab from "./tab/Tab";
+import { pageVariant } from "../../variants/app.variant";
+import { useInView } from "../../hooks/use-in-view";
+import { useRef } from "react";
+import { CUBIC } from "../../variants/global.transition";
 
 export default function SingleProject() {
+  const nextTextRef = useRef<HTMLSpanElement>(null);
+  const [isInView] = useInView(nextTextRef);
+  console.log(isInView);
+
   return (
-    <motion.div className="h-full flex flex-col overflow-scroll">
+    <motion.div
+      variants={pageVariant}
+      className="h-full flex flex-col overflow-scroll"
+    >
       <div className=" h-32 w-full py-6 flex-1">
         <div className="w-9/12 mx-auto h-full flex items-center font-extralight">
-          <span className="text-gray-400 mr-3 uppercase">Next </span>
+          <motion.span
+            ref={nextTextRef}
+            className={`text-gray-400 mr-3 uppercase`}
+          >
+            Next{" "}
+          </motion.span>
           <ArrowForwardOutlined className="text-gray-400" />
         </div>
       </div>
@@ -17,6 +33,11 @@ export default function SingleProject() {
           1.0
         </motion.h2>
         <motion.img
+          initial={{ filter: "grayscale(0)" }}
+          animate={{
+            filter: "grayscale(1)",
+            transition: { duration: 3, ease: "backOut" },
+          }}
           layoutId="single-project-img"
           src={PROJECT_IMG}
           className="w-full h-full object-cover mix-blend-luminosity"
@@ -49,6 +70,15 @@ export default function SingleProject() {
       <div className="mt-28 w-1/2 mx-auto">
         <Tab />
       </div>
+      {!isInView && (
+        <motion.p
+          className="text-gray-400 mr-3 uppercase absolute font-extralight left-[-80px] bottom-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1.3, ease: CUBIC } }}
+        >
+          Next <ArrowForwardOutlined className="text-gray-400" />
+        </motion.p>
+      )}
     </motion.div>
   );
 }

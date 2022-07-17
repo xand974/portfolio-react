@@ -37,15 +37,15 @@ export default function Tab() {
         ))}
       </thead>
       <tbody className="flex-[4] relative bg-gray-200">
-        <div className="w-10/12 mx-auto">
+        <tr className="w-10/12 mx-auto">
           {bodyData
             .filter((item) => item.id === activeId)
             .map((item, index) => (
-              <tr className="w-full h-full absolute pt-4" key={index}>
-                <td className="text-white">{item.content}</td>
-              </tr>
+              <td className="h-full absolute pt-4" key={index}>
+                <div className="text-white">{item.content}</div>
+              </td>
             ))}
-        </div>
+        </tr>
       </tbody>
     </table>
   );

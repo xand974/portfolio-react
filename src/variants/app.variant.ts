@@ -1,12 +1,26 @@
+import { CUBIC } from "./global.transition";
 export const appVariant = {
+  animate: {
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+};
+
+export const pageVariant = {
   initial: {
-    scale: 1,
+    opacity: 0,
+    y: -30,
   },
   animate: {
-    scale: 0.4,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: CUBIC,
+    },
   },
   exit: {
-    scale: 1,
-    opacity: 0,
+    y: "100vh",
   },
 };
