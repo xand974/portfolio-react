@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { LINKS } from "../mock/data";
+import { LINKS } from "mock/data";
 
 export default function Sidebar() {
   return (
-    <motion.section className="main__left h-full flex-[1]">
+    <motion.section className="main__left h-full flex-1">
       <motion.div className="flex flex-col items-start w-10/12 mx-auto justify-center h-full">
         {LINKS.map((item, index) => (
           <motion.div

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import "../sass/app.scss";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./shared/Sidebar";
 import { motion } from "framer-motion";
 import { useCanvas } from "../hooks/use-canvas";
 

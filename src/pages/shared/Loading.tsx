@@ -1,4 +1,4 @@
-import { SET_LOADING } from "../context/slices/app.slice";
+import { SET_LOADING } from "../../context/slices/app.slice";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import {
@@ -7,7 +7,7 @@ import {
   loadingTextBottomVariant,
   boxTopVariant,
   boxBottomVariant,
-} from "../variants/loading.variants";
+} from "../../variants/loading.variants";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
@@ -21,7 +21,7 @@ export default function Loading() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="bg-[#141414] w-screen h-screen flex justify-center flex-col items-center fixed top-0 left-0"
+      className="bg-[#141414] w-screen h-screen flex justify-center flex-col items-center fixed top-0 left-0 z-30"
       onAnimationComplete={() =>
         setTimeout(() => {
           dispatch(SET_LOADING(false));

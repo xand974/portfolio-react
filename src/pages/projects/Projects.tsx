@@ -1,6 +1,6 @@
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "../single-project/card/ProjectCard";
 import { motion } from "framer-motion";
-import { useSmoothScroll } from "../hooks/use-smooth-scroll";
+import { useSmoothScroll } from "../../hooks/use-smooth-scroll";
 import { useRef } from "react";
 
 export default function Projects() {

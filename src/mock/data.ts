@@ -8,10 +8,11 @@ export const LINKS: LinkType[] = [
   {
     title: "RESUME",
     link: "https://malet.notion.site/Resume-Alexandre-Malet-531d1c9ee7aa44c39cddc1b5f6734184",
+    subTitle: "ceci est un test",
   },
-  { title: "ABOUT ME", link: "about-me" },
-  { title: "PROJECTS", link: "projects" },
-  { title: "SKILLS", link: "skills" },
+  { title: "ABOUT ME", link: "/about-me", subTitle: "ceci est un test" },
+  { title: "PROJECTS", link: "/projects", subTitle: "ceci est un test" },
+  { title: "SKILLS", link: "/skills", subTitle: "ceci est un test" },
   { title: "CONTACT ME", link: "mailto:xand974@gmail.com" },
 ];
 
