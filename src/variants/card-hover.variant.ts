@@ -17,7 +17,7 @@ export const hoverCardVariant = {
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.3,
+      duration: 1.3,
       ease: CUBIC,
     },
   },
@@ -30,7 +30,7 @@ export const cardHoverImgVariant = {
   animate: {
     y: 0,
     transition: {
-      duration: 1.3,
+      duration: 2,
       ease: CUBIC,
     },
   },
