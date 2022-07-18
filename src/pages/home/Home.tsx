@@ -8,6 +8,9 @@ export default function Home() {
   return (
     <motion.section
       variants={pageVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className="w-full h-full grid grid-cols-2"
     >
       <motion.div className=" p-6">
@@ -40,13 +43,16 @@ export default function Home() {
             </motion.p>
           ))}
         </motion.div>
-        <p className="mt-5 w-9/12 text-gray-500 leading-7 font-thin">
+        <motion.p
+          className="mt-5 w-9/12 text-gray-500 leading-7 font-thin"
+          variants={letterAppearAnimation}
+        >
           <span className="text-gray-200">Fullstack Web Developer </span>{" "}
           specialized in{" "}
           <span className="text-gray-200 line-through">javascript</span>{" "}
           <span className="text-gray-200">typescript</span> and
           <span className="text-gray-200"> .NET C#</span>
-        </p>
+        </motion.p>
       </motion.div>
       <div className=""></div>
     </motion.section>

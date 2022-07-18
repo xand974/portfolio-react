@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { LINKS } from "mock/data";
 import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -13,7 +14,7 @@ export default function Sidebar() {
             className="text-gray-400  mb-7 font-light text-[11px]"
             key={index}
           >
-            <a href={item.link}>{item.title}</a>
+            <Link to={item.link}>{item.title}</Link>
           </motion.div>
         ))}
       </motion.div>
