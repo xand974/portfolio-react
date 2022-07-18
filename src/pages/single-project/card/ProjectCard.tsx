@@ -1,11 +1,13 @@
 import React from "react";
-import { PROJECT_IMG, PROJECT_IMG_TWO } from "../mock/data";
+import { PROJECT_IMG, PROJECT_IMG_TWO } from "mock/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { hoverCardVariant } from "../variants/card-hover.variant";
-import { useMousePosition } from "../hooks/use-mouse-position";
+import { hoverCardVariant } from "../../../variants/card-hover.variant";
+import { useMousePosition } from "../../../hooks/use-mouse-position";
+import { useNavigate } from "react-router";
 
 export default function ProjectCard() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const hoveredImageRef = useRef<HTMLDivElement>(null);
   const leftDividerRef = useRef<HTMLDivElement>(null);
@@ -29,25 +31,35 @@ export default function ProjectCard() {
     element.style.transform = `translate(10%, 10%)`;
   }, [hoveredImageRef.current, x, y]);
 
+  const goToProject = () => {
+    navigate("/projects/123");
+  };
   return (
-    <AnimatePresence>
+    <>
       <motion.div
         key="hover-card"
         className="flex items-center my-14"
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
+        onClick={() => goToProject()}
       >
         {show && (
-          <motion.div
-            initial="hidden"
-            animate="animate"
-            exit="exit"
-            className="fixed z-50 w-72 h-auto transition-[all 1s ease-in-out]"
-            variants={hoverCardVariant}
-            ref={hoveredImageRef}
-          >
-            <img className="opacity-1" src={PROJECT_IMG} />
-          </motion.div>
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              initial="hidden"
+              animate="animate"
+              exit="exit"
+              className="fixed z-50 w-72 h-auto transition-[all 1s ease-in-out]"
+              variants={hoverCardVariant}
+              ref={hoveredImageRef}
+            >
+              <motion.img
+                layoutId="single-project-img"
+                className="opacity-1"
+                src={PROJECT_IMG}
+              />
+            </motion.div>
+          </AnimatePresence>
         )}
 
         <div ref={leftDividerRef} className="h-[1px] bg-gray-400"></div>
@@ -58,6 +70,6 @@ export default function ProjectCard() {
         </div>
         <div ref={rightDividerRef} className="h-[1px] bg-gray-400"></div>
       </motion.div>
-    </AnimatePresence>
+    </>
   );
 }

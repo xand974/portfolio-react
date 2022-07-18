@@ -9,7 +9,7 @@ export const loadingContainerVariant = {
   exit: {
     opacity: 0,
     y: "100vh",
-    duration: 1.4,
+    duration: 0.4,
     ease: LOW_CUBIC,
   },
 };
@@ -24,7 +24,7 @@ export const loadingTextTopVariant = {
     y: 0,
     transition: {
       ease: CUBIC,
-      duration: 1,
+      duration: 0.2,
     },
     exit: {
       opacity: 0,
@@ -47,7 +47,7 @@ export const loadingTextBottomVariant = {
     y: 0,
     transition: {
       ease: CUBIC,
-      duration: 1,
+      duration: 0.2,
     },
     exit: {
       opacity: 0,

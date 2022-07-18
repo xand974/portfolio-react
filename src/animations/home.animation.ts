@@ -8,7 +8,7 @@ export const parentLetter = {
 };
 export const letterAppearAnimation = {
   initial: {
-    y: 50,
+    y: 10,
     opacity: 0,
   },
   animate: {

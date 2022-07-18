@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { AnimateSharedLayout } from "framer-motion";
 import { store } from "./context/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -18,11 +17,9 @@ root.render(
   <React.StrictMode>
     <CursorProvider>
       <Provider store={store}>
-        <AnimateSharedLayout>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </AnimateSharedLayout>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </CursorProvider>
   </React.StrictMode>

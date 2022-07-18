@@ -1,6 +1,6 @@
 import "./sass/app.scss";
 import Main from "pages/Main";
-import AnimatedRoutes from "./components/AnimatedRoutes";
+import AnimatedRoutes from "./pages/core/AnimatedRoutes";
 
 function App() {
   return (
