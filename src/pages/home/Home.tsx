@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { ME } from "mock/data";
+import { ME, PROJECT_IMG } from "mock/data";
 import { parentLetter, letterAppearAnimation } from "animations/home.animation";
 import { pageVariant } from "../../variants/app.variant";
+import SliderImg from "./slider-img/SliderImg";
 
 export default function Home() {
   const [lastName, firstName] = ME;
@@ -11,7 +12,7 @@ export default function Home() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="w-full h-full grid grid-cols-2"
+      className="w-full h-full grid grid-cols-2 overflow-hidden"
     >
       <motion.div className=" p-6">
         <motion.div
@@ -24,7 +25,8 @@ export default function Home() {
             <motion.p
               variants={letterAppearAnimation}
               key={index}
-              className="inline-block"
+              className="inline-block hero glitch layers"
+              data-text={item}
               style={{
                 marginRight: index === lastName.length - 1 ? "10px" : 0,
               }}
@@ -35,26 +37,54 @@ export default function Home() {
 
           {firstName.split("").map((item, index) => (
             <motion.p
+              className="inline-block hero glitch layers"
+              data-text={item}
               variants={letterAppearAnimation}
               key={index}
-              className="inline-block"
             >
               {item}
             </motion.p>
           ))}
         </motion.div>
-        <motion.p
-          className="mt-5 w-9/12 text-gray-500 leading-7 font-thin"
-          variants={letterAppearAnimation}
-        >
-          <span className="text-gray-200">Fullstack Web Developer </span>{" "}
+        <motion.p className="mt-5 w-9/12 text-gray-500 leading-7 font-thin">
+          <motion.span
+            variants={letterAppearAnimation}
+            initial="initial"
+            animate="animate"
+            className="text-gray-200"
+          >
+            Fullstack Web Developer{" "}
+          </motion.span>{" "}
           specialized in{" "}
-          <span className="text-gray-200 line-through">javascript</span>{" "}
-          <span className="text-gray-200">typescript</span> and
-          <span className="text-gray-200"> .NET C#</span>
+          <motion.span
+            variants={letterAppearAnimation}
+            animate="animate"
+            initial="initial"
+            className="text-gray-200 line-through"
+          >
+            javascript
+          </motion.span>{" "}
+          <motion.span
+            variants={letterAppearAnimation}
+            animate="animate"
+            initial="initial"
+            className="text-gray-200"
+          >
+            typescript
+          </motion.span>{" "}
+          and
+          <motion.span
+            variants={letterAppearAnimation}
+            animate="animate"
+            initial="initial"
+            className="text-gray-200"
+          >
+            {" "}
+            .NET C#
+          </motion.span>
         </motion.p>
       </motion.div>
-      <div className=""></div>
+      <SliderImg />
     </motion.section>
   );
 }

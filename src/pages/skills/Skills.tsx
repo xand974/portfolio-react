@@ -6,6 +6,9 @@ export default function Skills() {
   return (
     <motion.div
       variants={pageVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className="container w-full h-full flex flex-col"
     >
       <div className="flex-1 flex items-center w-10/12 m-auto ">

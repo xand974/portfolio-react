@@ -10,17 +10,39 @@ export const appVariant = {
 export const pageVariant = {
   initial: {
     opacity: 0,
-    y: -30,
   },
   animate: {
-    opacity: 1,
-    y: 0,
+    times: [0, 0.2, 0.5, 0.8, 1],
+    opacity: [0.1, 0.6, 1],
+    y: [-1, 0],
+    x: [3, 0],
     transition: {
       duration: 0.7,
-      ease: CUBIC,
+      staggerChildren: 0.34,
     },
   },
   exit: {
-    y: "100vh",
+    times: [0, 0.2, 0.5, 0.8, 1],
+    opacity: [0.9, 0.5, 0],
+    transition: {
+      duration: 0.7,
+    },
   },
+};
+
+export const projectVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    zIndex: [10, -10, 10, -10],
+    times: [0, 0.2, 0.5, 0.8, 1],
+    opacity: [0.1, 1],
+    y: [-1, 0],
+    x: [3, 0],
+    transition: {
+      duration: 0.7,
+    },
+  },
+  exit: {},
 };

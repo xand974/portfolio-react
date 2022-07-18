@@ -1,4 +1,4 @@
-import React from "react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import StackTab from "./StackTab";
 
@@ -25,15 +25,16 @@ export default function Tab() {
     >
       <thead className="flex justify-between flex-col flex-1  ">
         {headerData.map((item, index) => (
-          <tr
+          <motion.tr
+            whileTap={{ scale: 0.8 }}
             className={`flex items-center justify-center h-full transition-all ${
               activeId === item.id ? "bg-gray-200" : "bg-black"
             }`}
             key={index}
             onClick={() => setActiveId(item.id)}
           >
-            <td className="text-white">{item.title}</td>
-          </tr>
+            <motion.td className="text-white">{item.title}</motion.td>
+          </motion.tr>
         ))}
       </thead>
       <tbody className="flex-[4] relative bg-gray-200">

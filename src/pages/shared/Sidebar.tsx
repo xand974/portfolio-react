@@ -14,7 +14,13 @@ export default function Sidebar() {
             className="text-gray-400  mb-7 font-light text-[11px]"
             key={index}
           >
-            <Link to={item.link}>{item.title}</Link>
+            {item.crossOrigin ? (
+              <a href={item.link} target="_blank">
+                {item.title}
+              </a>
+            ) : (
+              <Link to={item.link}>{item.title}</Link>
+            )}
           </motion.div>
         ))}
       </motion.div>

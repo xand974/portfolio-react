@@ -14,6 +14,7 @@ export function useInView(ref: RefObject<HTMLElement> | null) {
     };
     const observer = new IntersectionObserver(callback, options);
     observer.observe(element);
+    return () => observer.unobserve(element)
   }, [ref?.current]);
 
   return [isInView];
