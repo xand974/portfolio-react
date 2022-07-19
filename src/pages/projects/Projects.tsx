@@ -2,16 +2,26 @@ import ProjectCard from "../single-project/card/ProjectCard";
 import { motion } from "framer-motion";
 import { useSmoothScroll } from "../../hooks/use-smooth-scroll";
 import { useRef } from "react";
-import { pageVariant } from "../../variants/app.variant";
+import { projectVariant } from "../../variants/app.variant";
 
 export default function Projects() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   // const [position] = useSmoothScroll(scrollRef);
 
   return (
-    <motion.div variants={pageVariant} className="w-full h-full flex flex-col">
+    <motion.div
+      variants={projectVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="w-full h-full flex flex-col"
+      ref={containerRef}
+    >
       <div className="flex-1 flex items-center w-10/12 m-auto ">
-        <h1 className="text-gray-200 text-4xl font-thin tracking-wider relative">
+        <h1
+          data-text="RECENT WORK"
+          className="hero glitch layers text-gray-200 text-4xl font-thin tracking-wider relative"
+        >
           RECENT WORKS
           <span className="absolute text-[0.6rem] top-[-25px] right-[-20px] text-white font-extralight">
             1011
@@ -20,13 +30,13 @@ export default function Projects() {
       </div>
       <div className="flex-[6] overflow-x-hidden overflow-y-scroll transition-all">
         <div className="w-10/12 m-auto h-full" id="scroll-container">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
         </div>
       </div>
     </motion.div>

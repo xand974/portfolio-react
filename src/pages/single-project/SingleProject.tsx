@@ -2,7 +2,7 @@ import { ArrowForwardOutlined } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { PROJECT_IMG } from "mock/data";
 import Tab from "./tab/Tab";
-import { pageVariant } from "../../variants/app.variant";
+import { projectVariant } from "../../variants/app.variant";
 import { useInView } from "../../hooks/use-in-view";
 import { useRef } from "react";
 import { CUBIC } from "../../variants/global.transition";
@@ -10,11 +10,13 @@ import { CUBIC } from "../../variants/global.transition";
 export default function SingleProject() {
   const nextTextRef = useRef<HTMLSpanElement>(null);
   const [isInView] = useInView(nextTextRef);
-  console.log(isInView);
 
   return (
     <motion.div
-      variants={pageVariant}
+      variants={projectVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className="h-full flex flex-col overflow-scroll"
     >
       <div className=" h-32 w-full py-6 flex-1">

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import cls from "classnames";
 import { useMousePosition } from "../../hooks/use-mouse-position";
 type CursorContextType = string | boolean;
@@ -27,7 +27,7 @@ const CursorProvider = ({ children }: { children: JSX.Element }) => {
           top: `${mousePosition.y}px`,
         }}
       >
-        <div className="w-full h-full rounded-full bg-white"></div>
+        <div className="circle-cursor--dot"></div>
       </ins>
       {children}
     </CursorContext.Provider>
