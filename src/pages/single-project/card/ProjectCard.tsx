@@ -1,12 +1,15 @@
-import React from "react";
-import { PROJECT_IMG, PROJECT_IMG_TWO } from "mock/data";
+import { PROJECT_IMG } from "mock/data";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, RefObject } from "react";
 import { hoverCardVariant } from "../../../variants/card-hover.variant";
 import { useMousePosition } from "../../../hooks/use-mouse-position";
 import { useNavigate } from "react-router";
 
-export default function ProjectCard() {
+export default function ProjectCard({
+  containerRef,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+}) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const hoveredImageRef = useRef<HTMLDivElement>(null);
@@ -25,11 +28,22 @@ export default function ProjectCard() {
 
   useEffect(() => {
     if (!hoveredImageRef.current) return;
+    if (!containerRef.current) return;
     const element = hoveredImageRef.current;
-    element.style.top = `${y}px`;
-    element.style.left = `${x}px`;
+    const container = containerRef.current;
+    const imageHeight = element.getBoundingClientRect().height;
+    const offset = container.getBoundingClientRect().bottom - imageHeight;
+    const mouseHeight = 40;
+    element.style.transition = "top 0.3s ease";
+    if (offset < y) {
+      element.style.top = `${y - imageHeight - mouseHeight}px`;
+      element.style.left = `${x}px`;
+    } else {
+      element.style.top = `${y}px`;
+      element.style.left = `${x}px`;
+    }
     element.style.transform = `translate(10%, 10%)`;
-  }, [hoveredImageRef.current, x, y]);
+  }, [hoveredImageRef.current, x, y, containerRef]);
 
   const goToProject = () => {
     navigate("/projects/123");
@@ -49,7 +63,7 @@ export default function ProjectCard() {
               initial="hidden"
               animate="animate"
               exit="exit"
-              className="fixed z-50 w-72 h-auto transition-[all 1s ease-in-out]"
+              className="fixed z-50 w-72 h-auto transition-[top 1s ease-in-out]"
               variants={hoverCardVariant}
               ref={hoveredImageRef}
             >

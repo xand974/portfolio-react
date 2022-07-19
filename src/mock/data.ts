@@ -13,7 +13,6 @@ export const LINKS: LinkType[] = [
   },
   { title: "ABOUT ME", link: "/about-me", subTitle: "ceci est un test" },
   { title: "PROJECTS", link: "/projects", subTitle: "ceci est un test" },
-  { title: "SKILLS", link: "/skills", subTitle: "ceci est un test" },
   { title: "CONTACT ME", link: "mailto:xand974@gmail.com", crossOrigin: true },
 ];
 

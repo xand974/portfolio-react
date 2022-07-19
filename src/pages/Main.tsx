@@ -4,6 +4,7 @@ import Sidebar from "./shared/Sidebar";
 import { motion } from "framer-motion";
 import { useCanvas } from "../hooks/use-canvas";
 import { appVariant } from "../variants/app.variant";
+import { useAppSelector } from "../hooks/use-selector";
 
 type AppType = {
   children: JSX.Element;
@@ -11,6 +12,7 @@ type AppType = {
 function Main({ children }: AppType) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [canvas] = useCanvas(canvasRef);
+  const { loading } = useAppSelector((state) => state.app);
   useEffect(() => {
     // if (!canvas) return;
     // canvas.draw();
@@ -29,8 +31,13 @@ function Main({ children }: AppType) {
 
   return (
     <motion.div className="w-screen h-screen overflow-hidden p-7 bg-[#141414]">
+      <div className="absolute top-[8px] right-[3%] font-extralight text-sm flex items-center text-gray-200">
+        <button className="background-none border-none">FR</button>
+        <span className="mx-2">/</span>
+        <button className="background-none border-none">EN</button>
+      </div>
       <div className="w-full h-full flex items-center">
-        <Sidebar />
+        {loading ? <></> : <Sidebar />}
         <section className="main__right flex-[6]  w-full h-full">
           <canvas className="w-full h-full" ref={canvasRef}></canvas>
           <motion.div

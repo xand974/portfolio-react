@@ -1,6 +1,4 @@
-import { SET_LOADING } from "../../context/slices/app.slice";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
 import {
   loadingContainerVariant,
   loadingTextTopVariant,
@@ -9,10 +7,8 @@ import {
   boxBottomVariant,
 } from "../../variants/loading.variants";
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
 
 export default function Loading() {
-  const dispatch = useDispatch();
   const router = useNavigate();
 
   return (
@@ -24,7 +20,6 @@ export default function Loading() {
       className="bg-[#141414] w-screen h-screen flex justify-center flex-col items-center fixed top-0 left-0 z-30"
       onAnimationComplete={() =>
         setTimeout(() => {
-          dispatch(SET_LOADING(false));
           router("/home");
         }, 500)
       }

@@ -1,11 +1,6 @@
 .slider {
-  //   animation: slide 100s ease infinite;
-  @keyframes slide {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-300vh);
+  &__img {
+    &--glitch {
     }
   }
 }

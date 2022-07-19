@@ -19,6 +19,7 @@ export const pageVariant = {
     transition: {
       duration: 0.7,
       staggerChildren: 0.34,
+      ease: CUBIC,
     },
   },
   exit: {
@@ -26,6 +27,7 @@ export const pageVariant = {
     opacity: [0.9, 0.5, 0],
     transition: {
       duration: 0.7,
+      ease: CUBIC,
     },
   },
 };
@@ -42,7 +44,15 @@ export const projectVariant = {
     x: [3, 0],
     transition: {
       duration: 0.7,
+      ease: CUBIC,
     },
   },
-  exit: {},
+  exit: {
+    opacity: 1,
+    y: 10,
+    transition: {
+      duration: 0.2,
+      ease: CUBIC,
+    },
+  },
 };

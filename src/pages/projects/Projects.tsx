@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { projectVariant } from "../../variants/app.variant";
 
 export default function Projects() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   // const [position] = useSmoothScroll(scrollRef);
 
   return (
@@ -15,6 +15,7 @@ export default function Projects() {
       animate="animate"
       exit="exit"
       className="w-full h-full flex flex-col"
+      ref={containerRef}
     >
       <div className="flex-1 flex items-center w-10/12 m-auto ">
         <h1
@@ -29,13 +30,13 @@ export default function Projects() {
       </div>
       <div className="flex-[6] overflow-x-hidden overflow-y-scroll transition-all">
         <div className="w-10/12 m-auto h-full" id="scroll-container">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
+          <ProjectCard containerRef={containerRef} />
         </div>
       </div>
     </motion.div>

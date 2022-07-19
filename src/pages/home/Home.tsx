@@ -1,11 +1,20 @@
 import { motion } from "framer-motion";
-import { ME, PROJECT_IMG } from "mock/data";
+import { ME } from "mock/data";
 import { parentLetter, letterAppearAnimation } from "animations/home.animation";
 import { pageVariant } from "../../variants/app.variant";
 import SliderImg from "./slider-img/SliderImg";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { SET_LOADING } from "../../context/slices/app.slice";
 
 export default function Home() {
   const [lastName, firstName] = ME;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(SET_LOADING(false));
+  }, [dispatch]);
+
   return (
     <motion.section
       variants={pageVariant}

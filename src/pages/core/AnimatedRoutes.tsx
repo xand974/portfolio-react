@@ -5,7 +5,6 @@ import Loading from "pages/shared/Loading";
 import Projects from "pages/projects/Projects";
 import SingleProject from "pages/single-project/SingleProject";
 import About from "pages/about/About";
-import Skills from "pages/skills/Skills";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -18,7 +17,6 @@ export default function AnimatedRoutes() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<SingleProject />} />
         <Route path="/about-me" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
       </Routes>
     </AnimatePresence>
   );
