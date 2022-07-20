@@ -43,7 +43,7 @@ export default function ProjectCard({
       element.style.left = `${x}px`;
     }
     element.style.transform = `translate(10%, 10%)`;
-  }, [hoveredImageRef.current, x, y, containerRef]);
+  }, [hoveredImageRef, x, y, containerRef]);
 
   const goToProject = () => {
     navigate("/projects/123");

@@ -1,10 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import "../sass/app.scss";
 import Sidebar from "./shared/Sidebar";
 import { motion } from "framer-motion";
 import { useCanvas } from "../hooks/use-canvas";
 import { appVariant, mainSectionVariant } from "../variants/app.variant";
 import { useAppSelector } from "../hooks/use-selector";
+import { Effect } from "canvas/class/Effect";
+import { useLocation } from "react-router";
 
 type AppType = {
   children: JSX.Element;
@@ -12,22 +14,37 @@ type AppType = {
 function Main({ children }: AppType) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [canvas] = useCanvas(canvasRef);
-  const { loading } = useAppSelector((state) => state.app);
-  useEffect(() => {
-    if (!canvas) return;
-    canvas.draw();
-    // const infos = canvas.getImgInfos();
-    // const scanned = infos.data;
-    // for (let i = 0; i < scanned.length; i += 4) {
-    //   const grayScale = scanned[i] + scanned[i + 1] + scanned[i + 2];
-    //   const middle = grayScale / 3;
-    //   scanned[i] = middle;
-    //   scanned[i + 1] = middle;
-    //   scanned[i + 2] = middle;
-    // }
-    // const image = new ImageData(scanned, canvas.width, canvas.height);
-    // canvas.setImageFilter(image);
-  }, []);
+  const { loading , enableCanvas} = useAppSelector((state) => state.app);
+  const [reqId, setReqId] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {   
+    if(!canvas )return 
+    
+    const effect = new Effect(canvas.width, canvas.height);
+
+    const ctx = canvas.ctx
+    function animate(){
+      ctx.fillStyle = "rgba(0,0,0,0.2)"
+      ctx.fillRect(0,0,canvas.width , canvas.height)
+      for (const symbol of effect.symbols) {
+
+        symbol.draw(ctx , effect);
+      }
+     const id = requestAnimationFrame(animate);
+     setReqId(id)
+    }
+
+    animate();
+  
+  }, [canvas]);
+
+  // useEffect(() => {
+  //  if(!location.pathname.includes("home")) {
+  //   cancelAnimationFrame(reqId);
+  //  }
+    
+  // }, [reqId, location])
 
   return (
     <motion.div className="w-screen h-screen overflow-hidden p-7 bg-[#141414]">
@@ -43,7 +60,12 @@ function Main({ children }: AppType) {
           animate={loading ? "expand" : "reduce"}
           variants={mainSectionVariant}
         >
-          <canvas className="w-full h-full" ref={canvasRef}></canvas>
+          {
+            enableCanvas ? 
+            <canvas className="w-full h-full relative -z-10" ref={canvasRef}></canvas>
+          :
+          <></>
+          }
           <motion.div
             className="main__right__wrapper"
             variants={appVariant}

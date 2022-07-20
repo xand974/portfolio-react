@@ -8,8 +8,11 @@ export const useCanvas = (ref: RefObject<HTMLCanvasElement>) => {
     if (!ref.current) return;
     const ctx = ref.current.getContext("2d");
     if (!ctx) return;
-    setCanvas(new Canvas(ctx, IMG, ref.current.width, ref.current.height));
+
+    setCanvas(
+      new Canvas(ctx, IMG, ref.current.offsetWidth, ref.current.offsetHeight)
+    );
   }, [ref.current]);
 
-  return [canvas];
+  return [canvas as Canvas];
 };
