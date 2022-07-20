@@ -25,6 +25,7 @@ export const pageVariant = {
   exit: {
     times: [0, 0.2, 0.5, 0.8, 1],
     opacity: [0.9, 0.5, 0],
+    y: 10,
     transition: {
       duration: 0.7,
       ease: CUBIC,
@@ -49,10 +50,20 @@ export const projectVariant = {
   },
   exit: {
     opacity: 1,
-    y: 10,
     transition: {
       duration: 0.2,
       ease: CUBIC,
     },
+  },
+};
+
+export const mainSectionVariant = {
+  reduce: {
+    width: "0",
+    x: 0,
+  },
+  expand: {
+    width: "100%",
+    x: 0,
   },
 };

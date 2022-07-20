@@ -24,6 +24,7 @@ export default function SliderImg() {
           ref={sliderWrapperRef}
         >
           <motion.img
+            whileHover={{ boxShadow: "0 0 10px #7e74b2" }}
             src={PROJECT_IMG}
             alt=""
             className="w-full h-full my-12 object-cover"

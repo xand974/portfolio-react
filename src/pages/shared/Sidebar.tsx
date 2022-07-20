@@ -44,10 +44,20 @@ export default function Sidebar() {
         ))}
       </motion.div>
       <div className="absolute bottom-0 flex items-center">
-        <a className="text-gray-300 mr-3">
+        <a
+          className="text-gray-300 mr-3"
+          href="https://github.com/xand974"
+          target="_blank"
+          rel="noreferrer"
+        >
           <GitHub className="text-xl" />
         </a>
-        <a className="text-gray-300">
+        <a
+          className="text-gray-300"
+          href="https://www.linkedin.com/in/alexandre-malet-5a3432208/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <LinkedIn className="text-xl" />
         </a>
       </div>

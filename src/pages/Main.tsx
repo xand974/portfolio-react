@@ -3,7 +3,7 @@ import "../sass/app.scss";
 import Sidebar from "./shared/Sidebar";
 import { motion } from "framer-motion";
 import { useCanvas } from "../hooks/use-canvas";
-import { appVariant } from "../variants/app.variant";
+import { appVariant, mainSectionVariant } from "../variants/app.variant";
 import { useAppSelector } from "../hooks/use-selector";
 
 type AppType = {
@@ -14,8 +14,8 @@ function Main({ children }: AppType) {
   const [canvas] = useCanvas(canvasRef);
   const { loading } = useAppSelector((state) => state.app);
   useEffect(() => {
-    // if (!canvas) return;
-    // canvas.draw();
+    if (!canvas) return;
+    canvas.draw();
     // const infos = canvas.getImgInfos();
     // const scanned = infos.data;
     // for (let i = 0; i < scanned.length; i += 4) {
@@ -38,7 +38,11 @@ function Main({ children }: AppType) {
       </div>
       <div className="w-full h-full flex items-center">
         {loading ? <></> : <Sidebar />}
-        <section className="main__right flex-[6]  w-full h-full">
+        <motion.section
+          className="main__right flex-[6] w-full h-full"
+          animate={loading ? "expand" : "reduce"}
+          variants={mainSectionVariant}
+        >
           <canvas className="w-full h-full" ref={canvasRef}></canvas>
           <motion.div
             className="main__right__wrapper"
@@ -49,7 +53,7 @@ function Main({ children }: AppType) {
           >
             {children}
           </motion.div>
-        </section>
+        </motion.section>
       </div>
     </motion.div>
   );
